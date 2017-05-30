@@ -1,16 +1,6 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Finding Lane Lines on the Road**
-
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
+## Writeup
 
 
 [//]: # (Image References)
@@ -23,11 +13,9 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I applied gaussian blur with kernel size of 5 to the images. After that, I found the canny edges in the images, and applied a mask to the wanted area. Finally, I found the Hough lines from the edges, and combined the resulted images containing only those lines with the original images. All of these operations were made using the helper functions.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the `draw_lines()` function by splitting information of the left and right lane, i.e. the slopes as well as the x and y coordinates. I then calculated for both left and right lines the average slope, the average/middle point, and from those the intercept _b_ (_y=kx+b_), and used those to calculate the two end points for both of the lanes. Those points were used to draw the lines.
 
 ![alt text][image1]
 
